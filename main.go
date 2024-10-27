@@ -12,7 +12,9 @@ func main() {
 		}
 		transactions = append(transactions, transaction)
 	}
-	fmt.Println(transactions)
+
+	balance := calculateBalance(transactions)
+	fmt.Printf("Баланс: %.2f", balance)
 }
 
 func scanTransaction() float64 {
@@ -20,4 +22,13 @@ func scanTransaction() float64 {
 	fmt.Print("Введите транзакцию (n для выхода): ")
 	fmt.Scan(&transaction)
 	return transaction
+}
+
+func calculateBalance(transactions []float64) float64 {
+	balance := 0.0
+	for _, value := range transactions {
+		balance += value
+	}
+
+	return balance
 }
